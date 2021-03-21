@@ -13,18 +13,17 @@ def read_params(config_path):
 
 def get_data(config_path):
     config = read_params(config_path)
-    # print(config)
+    #print(config)
     data_path = config["data_source"]["s3_source"]
-    #print(data_path)
     df = pd.read_csv(data_path, sep=",", encoding='utf-8')
-    #nt(df.head())
     return df
 
 
 
 if __name__=="__main__":
+    #print(os.getcwd())
+    #os.chdir(r'C:\Users\User\PycharmProjects\simple_app')
     args = argparse.ArgumentParser()
     args.add_argument("--config", default="params.yaml")
     parsed_args = args.parse_args()
-    #print(parsed_args)
-    data = get_data(config_path= r'C:\Users\User\Desktop\simple_app\params.yaml')
+    data = get_data(config_path=parsed_args.config)
