@@ -1,7 +1,5 @@
 from flask import Flask, render_template, request, jsonify
 import os
-import yaml
-import joblib
 import numpy as np
 from prediction_service import prediction
 
@@ -16,8 +14,8 @@ app = Flask(__name__, static_folder=static_dir,template_folder=template_dir)
 
 @app.route("/", methods=["GET", "POST"])
 def index():
+
     if request.method == "POST":
-        pass
         try:
             if request.form:
                 dict_req = dict(request.form)
@@ -37,4 +35,4 @@ def index():
         return render_template("index.html")
 
 if __name__ == "__main__":
-    app.run(host='127.0.0.1', port=4000, debug=True)
+    app.run(host='127.0.0.1', port=5000, debug=True)
